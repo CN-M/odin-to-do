@@ -5,4 +5,8 @@ body {
   gap: 20px;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 /*# sourceMappingURL=style.css.map */

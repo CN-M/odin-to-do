@@ -36,7 +36,8 @@ function hideForm() {
 }
 
 function updateList() {
-  for (i in projects) {
+  projectList.innerHTML = '';
+  for (const element of projects) {
     const task = document.createElement('div');
     const title = document.createElement('h3');
     const description = document.createElement('h3');
@@ -45,10 +46,10 @@ function updateList() {
 
     const bre = document.createElement('br');
 
-    title.textContent = `${projects[i].title}`;
-    description.textContent = `${projects[i].description}`;
-    dueDate.textContent = `${projects[i].dueDate}`;
-    priority.textContent = `${projects[i].priority}`;
+    title.textContent = `${element.title}`;
+    description.textContent = `${element.description}`;
+    dueDate.textContent = `${element.dueDate}`;
+    priority.textContent = `${element.priority}`;
 
     task.appendChild(title);
     task.appendChild(description);
@@ -64,16 +65,18 @@ btn.addEventListener('click', showForm);
 
 mainForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  const title = document.getElementById('title');
-  const description = document.getElementById('description');
-  const dueDate = document.getElementById('dueDate');
-  const priority = document.getElementById('priority');
+  const title = document.getElementById('title').value;
+  const description = document.getElementById('description').value;
+  const dueDate = document.getElementById('dueDate').value;
+  const priority = document.getElementById('priority').value;
 
   makeTask(title, description, dueDate, priority);
-  console.table(projects);
   updateList();
-
-  // hideForm();
+  hideForm();
 });
 
 updateList();
+
+// for (const element of projects) {
+//   console.log(element.title);
+// }
